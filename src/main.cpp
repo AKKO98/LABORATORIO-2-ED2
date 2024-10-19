@@ -144,8 +144,8 @@ int main() {
     g.loadFromCSV(filename);
     std::cout << "Datos cargados exitosamente. Se han añadido " << g.airports.size() << " aeropuertos." << std::endl;
 
-    int option;
-
+    int option = 0;
+    std::string opcion;
     do {
         std::cout << "\nMenu de acciones sobre el grafo de rutas aereas:" << std::endl;
         std::cout << "1. Verificar si el grafo es conexo." << std::endl;
@@ -155,14 +155,14 @@ int main() {
         std::cout << "5. Mostrar el camino minimo entre dos aeropuertos dados." << std::endl;
         std::cout << "7. Salir." << std::endl;
         std::cout << "Seleccione una opcion: ";
+        std::cin >> opcion;
         try
         {
-            std::cin >> option;
-
+            option = std::stoi(opcion);
         }
         catch (const std::exception&)
         {
-            std::cout << "Error al elegir una opcion" << std::endl;
+            std::cout << "Solo se permiten numeros enteros" << std::endl;
         }
 
         switch (option) {
