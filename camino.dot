@@ -1,10 +1,6 @@
 digraph G {
 rankdir=LR;
 node [shape=circle, style=filled, color=lightblue];
-"DOM" -> "BGI" [label="336.897 km"];
-"BGI" -> "GRU" [label="4299.71 km"];
-"GRU" -> "JNB" [label="7439.22 km"];
-"JNB" -> "PER" [label="8309.64 km"];
-"PER" -> "XCH" [label="2612.52 km"];
-"XCH" -> "CCK" [label="984.664 km"];
+"DOM\n -Douglas-Charles Airport\n -Dominica, Dominica\n -Latitud: 15.547000\n-Longitud: -61.299999" -> "PTP\n -Pointe-à-Pitre Le Raizet\n -Pointe-a-pitre, Guadeloupe\n -Latitud: 16.265301\n-Longitud: -61.531799" [label="83.6295 km"];
+"PTP\n -Pointe-à-Pitre Le Raizet\n -Pointe-a-pitre, Guadeloupe\n -Latitud: 16.265301\n-Longitud: -61.531799" -> "SDQ\n -Las Américas International Airport\n -Santo Domingo, Dominican Republic\n -Latitud: 18.429701\n-Longitud: -69.668900" [label="896.429 km"];
 }

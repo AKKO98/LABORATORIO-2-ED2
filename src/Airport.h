@@ -6,27 +6,10 @@ struct Airport {
     std::string name;
     std::string city;
     std::string country;
-    double latitude;
-    double longitude;
-
+    double latitude = 0;
+    double longitude = 0;
+    
     void print() {
-        std::cout << code;
-        std::cout << ", ";
-
-        std::cout << name;
-        std::cout << ", ";
-
-        std::cout << city;
-        std::cout << ", ";
-
-        std::cout << country;
-        std::cout << ", ";
-
-        std::cout << latitude;
-        std::cout << ", ";
-
-        std::cout << longitude;
-        std::cout << ", ";
-        
+        std::cout << code << ", " << name << ", " << city << ", "  << country << ", " << latitude << ", "  << longitude;
     }
 };
