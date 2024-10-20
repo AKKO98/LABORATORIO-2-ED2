@@ -1,6 +1,6 @@
 digraph G {
 rankdir=LR;
 node [shape=circle, style=filled, color=lightblue];
-"DOM\n -Douglas-Charles Airport\n -Dominica, Dominica\n -Latitud: 15.547000\n-Longitud: -61.299999" -> "PTP\n -Pointe-à-Pitre Le Raizet\n -Pointe-a-pitre, Guadeloupe\n -Latitud: 16.265301\n-Longitud: -61.531799" [label="83.6295 km"];
-"PTP\n -Pointe-à-Pitre Le Raizet\n -Pointe-a-pitre, Guadeloupe\n -Latitud: 16.265301\n-Longitud: -61.531799" -> "SDQ\n -Las Américas International Airport\n -Santo Domingo, Dominican Republic\n -Latitud: 18.429701\n-Longitud: -69.668900" [label="896.429 km"];
+"BVC\n -Rabil Airport\n -Boa Vista, Cape Verde\n -Latitud: 16.136499\n-Longitud: -22.888901" -> "LIS\n -Humberto Delgado Airport (Lisbon Portela Airport)\n -Lisbon, Portugal\n -Latitud: 38.781300\n-Longitud: -9.135920" [label="2852.37 km"];
+"LIS\n -Humberto Delgado Airport (Lisbon Portela Airport)\n -Lisbon, Portugal\n -Latitud: 38.781300\n-Longitud: -9.135920" -> "DUB\n -Dublin Airport\n -Dublin, Ireland\n -Latitud: 53.421299\n-Longitud: -6.270070" [label="1642.48 km"];
 }

@@ -4,6 +4,7 @@
 #include <vector>
 #include <unordered_map>
 #include "Graph.h"
+#include <thread>
 
 void opcion1(Graph& g) {
     std::cout << std::endl;
@@ -27,6 +28,7 @@ void opcion2(Graph& g) {
     std::cout << "Calculando el peso del arbol de expansion minima (MST)..." << std::endl;
     g.findComponentsAndCalculateMST();
 }
+
 void opcion3(Graph& g) {
     std::cout << std::endl;
     std::cout << std::endl;
@@ -111,7 +113,7 @@ void opcion5(Graph& g) {
                 const auto& airportInfo1 = g.airports[*path[j]];     // Información del primer aeropuerto
                 const auto& airportInfo2 = g.airports[*path[j + 1]]; // Información del siguiente aeropuerto
 
-                // Incluir más detalles del aeropuerto en lugar del código solo
+                // Incluir detalles del aeropuerto
                 std::string label1 = airportInfo1.code + "\\n -" + airportInfo1.name + "\\n -" + airportInfo1.city + ", " + airportInfo1.country + "\\n -" + "Latitud: " + std::to_string(airportInfo1.latitude) + "\\n" + "-Longitud: " + std::to_string(airportInfo1.longitude);
                 std::string label2 = airportInfo2.code + "\\n -" + airportInfo2.name + "\\n -" + airportInfo2.city + ", " + airportInfo2.country + "\\n -" + "Latitud: " + std::to_string(airportInfo2.latitude) + "\\n" + "-Longitud: " + std::to_string(airportInfo2.longitude);
 
@@ -123,8 +125,17 @@ void opcion5(Graph& g) {
             dotFile.close();
 
             // Usar Graphviz para generar una imagen PNG desde el archivo DOT
-            system("dot -Tpng camino.dot -o camino.png");
-            std::cout << "El grafo del camino mínimo ha sido generado en 'camino.png'." << std::endl;
+            // Crear un hilo para ejecutar el comando de sistema en segundo plano
+            std::thread graphvizThread([]() {
+                std::cout << "Generando el grafo del camino mínimo... " << std::endl;
+                system("dot -Tpng camino.dot -o camino.png");
+                std::cout << " \n\n Grafo generado y guardado como camino.png" << std::endl;
+                });
+
+            // Continuar con el programa principal mientras el hilo ejecuta el comando
+            graphvizThread.detach();  // Desvincular el hilo para que se ejecute en segundo plano
+
+            std::cout << "Generando el grafo del camino mínimo... " << std::endl;
         }
         else {
             std::cout << "No hay camino entre " << airportCode1 << " y " << airportCode2 << "." << std::endl;
@@ -163,6 +174,7 @@ int main() {
         catch (const std::exception&)
         {
             std::cout << "Solo se permiten numeros enteros" << std::endl;
+            option = 0;
         }
 
         switch (option) {

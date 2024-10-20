@@ -59,6 +59,7 @@ private:
 
     inline double deg2rad(double deg) { return deg * (M_PI / 180); }
 
+    //Calcular la distancia entre dos puntos de latitud y longitud
     inline double haversine(double lat1, double lon1, double lat2, double lon2) {
         double R = 6371;
         double dLat = deg2rad(lat2 - lat1);
@@ -74,19 +75,22 @@ private:
     // Estructura para conjuntos disjuntos (Union-Find)
     struct DisjointSet {
         std::unordered_map<std::string, std::string> parent;
-        std::unordered_map<std::string, int> rank;
+        std::unordered_map<std::string, int> rank; // Esto solo se usa para cuando se quiera unir dos subconjustos, se una el más pequeño al más grande
 
         void makeSet(const std::string& airportCode) {
             parent[airportCode] = airportCode;
             rank[airportCode] = 0;
         }
 
+        //Encuentra la raiz del subconjunto al que pertenece un elemento
+        //Esto permite verificar si dos elementos pertenecen al mismo subconjunto
         std::string find(const std::string& airportCode) {
             if (parent[airportCode] != airportCode)
                 parent[airportCode] = find(parent[airportCode]);
             return parent[airportCode];
         }
 
+        //Este solo une los dos subconjustos en uno solo
         void unionSets(const std::string& airportCode1, const std::string& airportCode2) {
             std::string root1 = find(airportCode1);
             std::string root2 = find(airportCode2);
